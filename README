@@ -1,0 +1,12 @@
+Recommend me places!
+--------------------
+
+Stupid little website to save places, by adress or by direct location.
+
+Made with meteor (meteor.com)
+
+Packages used:
+* bootstrap
+* jquery
+* underscore
+
