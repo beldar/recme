@@ -71,7 +71,7 @@ if (Meteor.isClient) {
                 getCoords(address,nid);
              else{
                 Places.update(nid, {$set:{formated_address:address, coords: Session.get("userloc")}}); 
-                var mark = putMarker(nid, true);
+                var mark = putMarker(nid, true, true);
                 centerMarker(mark);
                 Session.set("userloc", false);
              }
@@ -122,7 +122,7 @@ if (Meteor.isClient) {
             var fa = results[0].formatted_address;
             var coords = results[0].geometry.location;
             Places.update(nid, {$set:{formated_address:fa, coords: coords}});
-            var mark = putMarker(nid, true);
+            var mark = putMarker(nid, true, true);
             centerMarker(mark);
           } else {
             alert("Geocode was not successful for the following reason: " + status);
@@ -130,7 +130,7 @@ if (Meteor.isClient) {
         });
   }
   
-  function putMarker(id, isel){
+  function putMarker(id, isel, show){
       if(isel)
         var p = Places.findOne({_id:id});
       else
@@ -155,12 +155,19 @@ if (Meteor.isClient) {
             markers[p._id] = marker;
             infos[p._id] = infowindow;
             google.maps.event.addListener(marker, 'click', function() {
-              if(info)
+                if(info)
                   info.close();
-              infowindow.open(map,marker);
-              Session.set("active_mark", p._id);
-              info =  infowindow;
+                infowindow.open(map,marker);
+                Session.set("active_mark", p._id);
+                info =  infowindow;
             });
+            if(show){
+                if(info)
+                  info.close();
+                infowindow.open(map,marker);
+                Session.set("active_mark", p._id);
+                info =  infowindow;
+            }
             return marker;
       }else
           return false;
