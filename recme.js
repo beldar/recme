@@ -12,6 +12,7 @@ if (Meteor.isClient) {
      Session.set("userloc", false);
      $("#map").height($("#map").width());
      geocoder = new google.maps.Geocoder();
+     $("[rel=tooltip]").tooltip();
      var mapOptions = {
         zoom: 12,
         center: new google.maps.LatLng(51.507222, -0.1275),//51,51125, -0,11980

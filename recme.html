@@ -5,27 +5,11 @@
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI7SkXImmZmsl8VPD3Z9uzF1bXzwZhr2s&sensor=true">
     </script>
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-
-      @media (max-width: 980px) {
-        body {
-            padding-top: 0px;
-            padding-bottom: 40px;
-          }
-      }
-      #map img { max-width: none; }
-      .selected{font-weight: bold;text-decoration: underline;}
-    </style>
 </head>
 <body>
+    <div id="wrap">
     {{>main}}
+    </div>
 </body>
 <template name="main">
     <div class="navbar navbar-fixed-top">
@@ -57,6 +41,11 @@
                 {{>places}}
             </div>
         </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+          <p class="muted credit">Made by and for <a target="_blank" rel="tooltip" title="Add me on Facebook!" href="http://facebook.com/beldar">Martí Planellas</a>. Want to <a target="_blank" href="https://github.com/beldar/recme">see the code?</a> <small>This was made in half a day, how cool is that?</small></p>
+      </div>
     </div>
     {{>modal}}
 </template>

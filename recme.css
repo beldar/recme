@@ -1,1 +1,47 @@
-/* CSS declarations go here */
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+@media (max-width: 980px) {
+    body {
+        padding-top: 0px;
+        padding-bottom: 40px;
+    }
+}
+#map img { max-width: none; }
+.selected{font-weight: bold;text-decoration: underline;}
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -40px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 40px;
+}
+#footer {
+    background-color: #f5f5f5;
+}
+.container .credit {
+    margin: 10px 0;
+    text-align: center;
+}
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 80px;
+  }
+}
