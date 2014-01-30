@@ -37,7 +37,7 @@ if (Meteor.isClient) {
      }
   });
   function success_callback(p){
-        Session.set("userloc", {jb:p.coords.latitude, kb: p.coords.longitude});
+        Session.set("userloc", {b:p.coords.latitude, e: p.coords.longitude});
         var latlng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
         geocoder.geocode({'latLng': latlng}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
@@ -137,7 +137,12 @@ if (Meteor.isClient) {
       else
         var p = id;
       if(typeof p !== 'undefined' && typeof p.coords !== 'undefined'){
-            var myLatlng = new google.maps.LatLng(p.coords.jb,p.coords.kb);
+	    var lat = false,long=false;
+	    for (var k in p.coords) {
+		if (! lat) lat = p.coords[k];
+		else long = p.coords[k];
+	    }
+            var myLatlng = new google.maps.LatLng(lat,long);
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
